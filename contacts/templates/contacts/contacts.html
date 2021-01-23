@@ -1,8 +1,23 @@
-<h1>Test</h1>
+<h1>Contacts</h1>
 
 <Table>
     <th>Contact</th>
-    {% for cont in contactlist %}
-    <tr>{{ cont.name }}</tr>
+    {% for cont in contacts %}
+    <tr>
+        <td><a href="{%  url 'contactdetail' cont.id %}">{{ cont.Name }}</a></td>
+    </tr>
     {% endfor %}
 </Table>
+
+<style>
+    body {
+        background-color: #add8e6;
+    }
+</style>
+
+<form action="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" name="add  qA          ">
+</form>
+
