@@ -1,0 +1,9 @@
+<h1>Documents</h1>
+{%  for file in files %}
+{{  file.Name }}
+{%  endfor %}
+
+<form method="post">
+    {{ form.as_p }}
+    <button name="add">Add File</button>
+</form>

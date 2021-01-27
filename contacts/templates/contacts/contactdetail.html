@@ -1,2 +1,8 @@
 <h1>Detail</h1>
-{{ form.as_p }}
+<form method="POST">
+    {{ error }}
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" name="update">Update </button>
+    <button type="submit" name="delete">Delete </button>
+</form>

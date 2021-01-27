@@ -7,6 +7,9 @@ class Contact(models.Model):
     Phone = models.CharField(max_length=15)
     Notes= models.TextField()
 
+    def __str__(self):
+        return self.Name
+
 class Files(models.Model):
     id = models.AutoField(primary_key=True)
     file = models.FileField(upload_to="media")
