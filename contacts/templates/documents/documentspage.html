@@ -1,9 +1,12 @@
 <h1>Documents</h1>
 {%  for file in files %}
-{{  file.Name }}
+{{  file.file }}
 {%  endfor %}
 
-<form method="post">
+
+{{ error }}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
     {{ form.as_p }}
     <button name="add">Add File</button>
 </form>

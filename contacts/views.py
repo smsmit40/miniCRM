@@ -34,6 +34,14 @@ def EmailPage(request):
 def DocumentsPage(request):
     files = Files.objects.all()
     form = DocumentForm()
+    if 'add' in request.POST:
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+        else:
+            error = "invalid"
+            return render(request, 'documents/documentspage.html', {'files': files, 'form': form, 'error': error})
     return render(request, 'documents/documentspage.html', {'files': files, 'form': form})
 
 

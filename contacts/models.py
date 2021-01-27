@@ -15,6 +15,9 @@ class Files(models.Model):
     file = models.FileField(upload_to="media")
     file_notes = models.TextField()
 
+    def __str__(self):
+        return self.file
+
 class Email(models.Model):
     contact = models.ForeignKey(Contact, on_delete=models.CASCADE)
     Attachment = models.ForeignKey(Files, null=True, blank=True, on_delete=models.SET_NULL)
