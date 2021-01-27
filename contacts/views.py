@@ -44,6 +44,11 @@ def DocumentsPage(request):
             return render(request, 'documents/documentspage.html', {'files': files, 'form': form, 'error': error})
     return render(request, 'documents/documentspage.html', {'files': files, 'form': form})
 
+def documentsdetail(request, pk):
+    document = Files.objects.get(pk=pk)
+    form = DocumentForm(instance=document)
+    return render(request, 'documents/documentsdetail.html', {'form': form})
+
 
 
 

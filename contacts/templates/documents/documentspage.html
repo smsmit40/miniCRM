@@ -1,6 +1,7 @@
 <h1>Documents</h1>
 {%  for file in files %}
-{{  file.file }}
+    <a href="{%  url 'documentsdetail' file.id %}"> {{  file.file }}</a>
+
 {%  endfor %}
 
 
