@@ -1,5 +1,5 @@
 from django.forms import ModelForm
-from .models import Contact, Email, Files
+from .models import Contact, Email, Files, Reminder
 
 class ContaactForm(ModelForm):
     class Meta:
@@ -14,4 +14,9 @@ class EmailForm(ModelForm):
 class DocumentForm(ModelForm):
     class Meta:
         model = Files
+        fields = '__all__'
+
+class ReminderForm(ModelForm):
+    class Meta:
+        model = Reminder
         fields = '__all__'

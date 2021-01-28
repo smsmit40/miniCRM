@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .models import Contact, Email, Files
-from .forms import ContaactForm, EmailForm, DocumentForm
+from .models import Contact, Email, Files, Reminder
+from .forms import ContaactForm, EmailForm, DocumentForm, ReminderForm
 # Create your views here.
 def home(request):
     return render(request, 'home.html')
@@ -31,6 +31,20 @@ def EmailPage(request):
     form = EmailForm()
     return render(request, 'emails/emailpage.html', {'emails': emails, 'form': form})
 
+def EmailDetail(request, pk):
+    emails = Email.objects.get(pk=pk)
+    form = EmailForm(instance=emails)
+
+    if 'update' in request.POST:
+        form = EmailForm(request.POST, instance=emails)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    if 'delete' in request.POST:
+        emails.delete()
+        return redirect('home')
+    return render(request, 'emails/emaildetail.html', {'form': form})
+
 def DocumentsPage(request):
     files = Files.objects.all()
     form = DocumentForm()
@@ -48,6 +62,11 @@ def documentsdetail(request, pk):
     document = Files.objects.get(pk=pk)
     form = DocumentForm(instance=document)
     return render(request, 'documents/documentsdetail.html', {'form': form})
+
+def ReminderPage(request):
+    reminder = Reminder.objects.all()
+    form = ReminderForm()
+    return render(request, 'reminders/reminderspage.html', {'reminder': reminder, 'form': form})
 
 
 

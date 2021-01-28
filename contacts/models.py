@@ -16,7 +16,7 @@ class Files(models.Model):
     file_notes = models.TextField()
 
     def __str__(self):
-        return self.file
+        return self.file.name
 
 class Email(models.Model):
     contact = models.ForeignKey(Contact, on_delete=models.CASCADE)

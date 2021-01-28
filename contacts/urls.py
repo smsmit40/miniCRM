@@ -7,5 +7,6 @@ urlpatterns = [
     path('contact/<int:pk>', views.contactdetail, name="contactdetail"),
     path('emails', views.EmailPage, name="emailpage"),
     path('documents', views.DocumentsPage, name="documentspage"),
-    path('documents/<int:pk>', views.documentsdetail, name='documentsdetail')
+    path('documents/<int:pk>', views.documentsdetail, name='documentsdetail'),
+    path('reminders', views.ReminderPage, name='reminderspage')
 ]

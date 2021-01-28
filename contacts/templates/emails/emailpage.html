@@ -1,7 +1,9 @@
 <h1>Email Page</h1>
 
 {% for email in emails %}
-{{ email.subjects }}
+    <a href="{%  url 'emails/emaildetail.html' email.id %}">{{ email.subject }}</a>
 {%  endfor %}
-
+<form method="post">
 {{ form.as_p }}
+<button name="send">Send Email and Save</button>
+</form>

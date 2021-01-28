@@ -1,0 +1,9 @@
+<h1>Reminders</h1>
+{%  for i in reminder %}
+{{ i.name }}
+{%  endfor %}
+
+<form method="POST">
+    {%  csrf_token %}
+    {{ form.as_p }}
+</form>
